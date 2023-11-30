@@ -1,0 +1,119 @@
+/* new overview view css */
+
+.row {
+  padding: 18px 0;
+  border-bottom: 1px solid #dfe6e9;
+}
+
+.row .label {
+  font-size: 16px;
+  color: #636e72;
+  font-weight: 600;
+}
+
+.row .value {
+  font-size: 18px;
+  color: #000;
+  font-weight: 600;
+}
+
+.row i {
+  width: 20px;
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.row .val-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* -------- */
+
+/* overview classes */
+
+.content h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.row-layout {
+  padding: 10px;
+}
+
+.info-card {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100%;
+  /* padding: 15px 0px; */
+  padding: 15px 5px 15px 15px;
+  border-right: 1px solid #dfe6e9;
+  box-sizing: border-box;
+}
+
+.info-card .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card .info .value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.info-card .info .value i {
+  margin-left: 8px;
+  font-size: 20px;
+}
+
+.info-card .info .label {
+  color: #636e72;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.info-card .card-icon {
+  margin-right: 10px;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  background: #74b9ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+i.up {
+  color: #27ae60;
+}
+
+i.down {
+  color: #e74c3c;
+}
+
+/* overview classes end */
+
+/* finance classes */
+.finance-cards {
+  border-right: none;
+}
+
+.finance-cards .card-icon {
+  background: #fdcb6e;
+}
+
+/* finance classes end */
+.consuption-card-wrapper {
+  padding: 15px 0px;
+}
+
+.consumption-filter {
+  margin: 0px 15px 15px 15px;
+  border-bottom: 1px solid #dfe6e9;
+  padding-bottom: 10px;
+}

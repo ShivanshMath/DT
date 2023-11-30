@@ -1,0 +1,15 @@
+.rect-card {
+  width: 150px;
+  height: 150px;
+  border-radius: 30px;
+  background-color: aliceblue;
+  transform: rotate(45deg);
+  background: linear-gradient(to right, #07193f, #ffffff);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.rect-card:hover {
+  transform: scale(1.04) rotate(45deg);
+  /* transform: ; */
+}

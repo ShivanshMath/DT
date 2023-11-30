@@ -1,0 +1,13 @@
+.layout {
+  width: calc(100vw - 200px);
+}
+
+.layout header {
+  padding: 8px 10px;
+  border: 1px solid #dfe6e9;
+  border-left: none;
+}
+
+.main {
+  padding: 20px;
+}

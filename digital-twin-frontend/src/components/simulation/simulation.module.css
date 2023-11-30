@@ -1,0 +1,60 @@
+.ant-row-pos {
+  position: relative;
+}
+
+.header-definition {
+  position: absolute;
+  top: 14px;
+  /* left: 17px; */
+  background: #fff;
+  padding: 0px 8px;
+}
+
+.rows {
+  /* height: 40px; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.header-row {
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.header-cell {
+  /* height: 100%;
+  width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row-divider {
+  margin: 12px 0px;
+}
+
+.row-divider-h {
+  height: 2px;
+  background: #07193f2b;
+}
+
+.row-icon {
+  margin-right: 10px;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  background: #74b9ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}

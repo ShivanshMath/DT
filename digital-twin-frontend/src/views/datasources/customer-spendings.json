@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Data",
+    "y": 5000,
+    "color": "#0984e3"
+  },
+  {
+    "name": "Calls",
+    "y": 4000,
+    "color": "#00cec9"
+  },
+  {
+    "name": "SMS",
+    "y": 3500,
+    "color": "#fdcb6e"
+  },
+  {
+    "name": "International",
+    "y": 2500,
+    "color": "#6c5ce7"
+  },
+  {
+    "name": "Services",
+    "y": 1500,
+    "color": "#00b894"
+  }
+]

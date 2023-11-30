@@ -1,0 +1,73 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.brand-logo {
+  width: 120px;
+  height: 30px;
+  background-image: url("../../images/incedo-logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.actions {
+  display: flex;
+  /* flex-direction: row; */
+}
+
+.user-info > div {
+  margin-right: 8px;
+  text-align: right;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  /* align-items: center; */
+}
+
+.user-info > div p {
+  font-size: 16px;
+}
+
+.user-info p.role {
+  font-size: 14px !important;
+  color: #636e72;
+}
+
+.user-info .dp {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #b2bec3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b2bec3;
+}
+
+.action-icons {
+  border-left: 1px solid #b2bec3;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.action-icons .icon {
+  margin-left: 15px;
+  font-size: large;
+  color: #636e72;
+  cursor: pointer;
+}

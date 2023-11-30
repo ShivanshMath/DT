@@ -1,0 +1,31 @@
+.layout {
+  width: calc(100vw - 200px);
+}
+
+.layout header {
+  padding: 8px 10px;
+  border: 1px solid #dfe6e9;
+  border-left: none;
+}
+
+.main {
+  padding: 20px;
+}
+
+/* .card-inner-layout {
+  padding: 15px;
+} */
+
+.card-header {
+  padding: 15px 15px 15px 15px;
+  background: linear-gradient(135deg, #5b247a 0%, #1bcedf 100%);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.chart-container {
+  /* margin-top: 30px; */
+  height: 330px;
+  padding: 15px;
+}

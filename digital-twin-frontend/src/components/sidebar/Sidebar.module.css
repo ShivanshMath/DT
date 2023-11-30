@@ -1,0 +1,30 @@
+.sidebar {
+  position: fixed;
+  width: 200px;
+  /* width: 15%; */
+  height: calc(100vh - 70px);
+  border-right: 1px solid #dfe6e9;
+  padding: 1px;
+}
+
+/* .sidebar ul .option {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.sidebar ul .option i {
+  width: 30px;
+}
+
+.sidebar ul .option:hover {
+  background-color: #1d2c4a30;
+}
+
+.sidebar ul .option.active {
+  background-color: #07193f;
+  color: #fff;
+} */

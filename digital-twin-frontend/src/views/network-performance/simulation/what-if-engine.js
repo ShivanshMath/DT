@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './WhatIfEngineNetwork.css'; 
+import Chart from "C:/Users/shivansh.mathur/Downloads/DigitalTwin/digital-twin-frontend/src/components/Charts/Chart";
+import PieChart from "C:/Users/shivansh.mathur/Downloads/DigitalTwin/digital-twin-frontend/src/components/Charts/Piecharts";
 
 const WhatIfEngineNetwork = () => {
   const [ueConnected, setUEConnected] = useState('');
+  const [chartCategories, setChartCategories] = useState([]);
   // const [ueConnected, setUEConnected] = useState('');
   // const [ueConnected, setUEConnected] = useState('');
   // const [ueConnected, setUEConnected] = useState('');
@@ -32,6 +35,7 @@ const WhatIfEngineNetwork = () => {
       );
 
       setApiResult(roundedResult);
+      setChartCategories(Object.keys(resultObject));
     } catch (error) {
       console.error('Error:', error);
     }
@@ -39,52 +43,68 @@ const WhatIfEngineNetwork = () => {
   
 
   return (
-    <div className="container">
-      <h1 className="title">What If Engine</h1>
-
-      <label htmlFor="ueConnected" className="label">
-        Enter no of UEs connected:
-      </label>
-      <input
-        type="text"
-        id="ueConnected"
-        name="ueConnected"
-        value={ueConnected}
-        onChange={(e) => setUEConnected(e.target.value)}
-        className="input"
-        required
-      />
-
-      <button type="button" onClick={onClickSubmit} className="button">
-        Submit
-      </button>
-
-      <div className="result-container">
-      {apiResult && (
-  <div>
-    <h2 className="result-title">Simulation Result:</h2>
-    <table className="result-table">
-      <thead>
-        <tr>
-          <th>KPI</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.entries(apiResult).map(([key, value]) => (
-          <tr key={key}>
-            <td>{key}</td>
-            <td>{value}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
-
-      </div>
+    <div className="layout">
+      <header>
+        <h2>What If Engine</h2>
+      </header>
+      <main className="main">
+        <div className="charts-container">
+          {/* Placeholder for PieChart */}
+          {apiResult && 'PRB Util%' in apiResult && (
+            <div className="chart-container">
+              <PieChart data={apiResult['PRB Util%']} />
+            </div>
+          )}
+  
+          {/* Placeholder for Chart */}
+          {apiResult && 'PRB Util%' in apiResult && (
+            <div className="chart-container">
+              <Chart data={apiResult['PRB Util%']} categories={chartCategories} />
+            </div>
+          )}
+        </div>
+  
+        <div className="result-container">
+          {apiResult && (
+            <div>
+              <h2 className="result-title">Simulation Result:</h2>
+              <table className="result-table">
+                <thead>
+                  <tr>
+                    <th>KPI</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(apiResult).map(([key, value]) => (
+                    <tr key={key}>
+                      <td>{key}</td>
+                      <td>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+  
+        <label htmlFor="ueConnected" className="label">
+          Enter no of UEs connected:
+        </label>
+        <input
+          type="text"
+          id="ueConnected"
+          name="ueConnected"
+          value={ueConnected}
+          onChange={(e) => setUEConnected(e.target.value)}
+          className="input"
+          required
+        />
+        <button type="button" onClick={onClickSubmit} className="button">
+          Submit
+        </button>
+      </main>
     </div>
   );
 };
-
 export default WhatIfEngineNetwork;

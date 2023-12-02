@@ -1,75 +1,104 @@
-.container {
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  .title {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    background-color: #45a049;
-  }
-  
-  .result-container {
-    margin-top: 20px;
-  }
-  
-  .result-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .result {
-    background-color: #f8f8f8;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    white-space: pre-wrap;
-  }
+/* WhatIfEngineNetwork.css */
 
-  .result-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .result-table th, .result-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .result-table th {
-    background-color: #f2f2f2;
-  }
-  
-  
+.layout {
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.result-container {
+  margin-top: 20px;
+}
+
+.result-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.result-table th,
+.result-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.result-table th {
+  background-color: #f2f2f2;
+}
+
+.charts-container {
+  display: flex;
+}
+
+.chart-container {
+  flex: 1;
+  height: 330px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.card-header {
+  padding: 15px;
+  background: linear-gradient(135deg, #5b247a 0%, #1bcedf 100%);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 8px 8px 0px 0px;
+}
+
+/* Styles for additional charts */
+.additional-chart-container {
+  margin-top: 20px;
+}
+
+.additional-chart-header {
+  padding: 15px;
+  background: linear-gradient(135deg, #5b247a 0%, #1bcedf 100%);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.additional-chart {
+  height: 330px;
+  padding: 15px;
+}

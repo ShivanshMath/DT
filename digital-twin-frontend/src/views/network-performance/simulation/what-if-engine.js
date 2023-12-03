@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './WhatIfEngineNetwork.css'; 
 import PieChart from "C:/Users/shivansh.mathur/Downloads/DigitalTwin/digital-twin-frontend/src/components/Charts/Piecharts";
 
+
 const WhatIfEngineNetwork = () => {
   const [ueConnected, setUEConnected] = useState('');
   // const [ueConnected, setUEConnected] = useState('');
@@ -46,20 +47,46 @@ const WhatIfEngineNetwork = () => {
         <h2>What If Engine</h2>
       </header>
       <main className="main">
+
+      <label htmlFor="ueConnected" className="label">
+          Enter no of UEs connected:
+        </label>
+        <input
+          type="text"
+          id="ueConnected"
+          name="ueConnected"
+          value={ueConnected}
+          onChange={(e) => setUEConnected(e.target.value)}
+          className="input"
+          required
+        />
+        <button type="button" onClick={onClickSubmit} className="button">
+          Submit
+        </button>
+        
         <div className="charts-container">
           {/* Placeholder for PieChart */}
+          <div className='chart-box' >    
+          <div className='card-header'>
+              <h3>PRB Util%</h3>
+              </div>       
           {apiResult && 'PRB Util%' in apiResult && (
             <div className="chart-container">
               <PieChart data={apiResult['PRB Util%']} />
             </div>
           )}
-  
-          {/* Placeholder for Chart */}
+          </div>
+          {/* Placeholder for PieChart */}
+          <div className='chart-box'>
+            <div className='card-header'>
+              <h3>Call Drops%</h3>
+              </div>
           {apiResult && 'PRB Util%' in apiResult && (
             <div className="chart-container">
               <PieChart data={apiResult['PRB Util%']} />
             </div>
           )}
+          </div>
         </div>
   
         <div className="result-container">
@@ -86,21 +113,7 @@ const WhatIfEngineNetwork = () => {
           )}
         </div>
   
-        <label htmlFor="ueConnected" className="label">
-          Enter no of UEs connected:
-        </label>
-        <input
-          type="text"
-          id="ueConnected"
-          name="ueConnected"
-          value={ueConnected}
-          onChange={(e) => setUEConnected(e.target.value)}
-          className="input"
-          required
-        />
-        <button type="button" onClick={onClickSubmit} className="button">
-          Submit
-        </button>
+        
       </main>
     </div>
     </>

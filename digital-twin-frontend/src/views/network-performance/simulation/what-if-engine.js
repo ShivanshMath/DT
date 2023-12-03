@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import './WhatIfEngineNetwork.css'; 
-import Chart from "C:/Users/shivansh.mathur/Downloads/DigitalTwin/digital-twin-frontend/src/components/Charts/Chart";
 import PieChart from "C:/Users/shivansh.mathur/Downloads/DigitalTwin/digital-twin-frontend/src/components/Charts/Piecharts";
 
 const WhatIfEngineNetwork = () => {
   const [ueConnected, setUEConnected] = useState('');
-  const [chartCategories, setChartCategories] = useState([]);
   // const [ueConnected, setUEConnected] = useState('');
   // const [ueConnected, setUEConnected] = useState('');
   // const [ueConnected, setUEConnected] = useState('');
@@ -35,15 +33,15 @@ const WhatIfEngineNetwork = () => {
       );
 
       setApiResult(roundedResult);
-      setChartCategories(Object.keys(resultObject));
+      
     } catch (error) {
       console.error('Error:', error);
     }
   };
   
 
-  return (
-    <div className="layout">
+  return (<>
+    <div className="layout" id='Layout'>
       <header>
         <h2>What If Engine</h2>
       </header>
@@ -59,7 +57,7 @@ const WhatIfEngineNetwork = () => {
           {/* Placeholder for Chart */}
           {apiResult && 'PRB Util%' in apiResult && (
             <div className="chart-container">
-              <Chart data={apiResult['PRB Util%']} categories={chartCategories} />
+              <PieChart data={apiResult['PRB Util%']} />
             </div>
           )}
         </div>
@@ -105,6 +103,7 @@ const WhatIfEngineNetwork = () => {
         </button>
       </main>
     </div>
+    </>
   );
 };
 export default WhatIfEngineNetwork;

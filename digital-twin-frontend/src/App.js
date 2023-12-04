@@ -22,30 +22,30 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        // eslint-disable-next-line 
+        
         path: "analytics",
         element: <Analytics />,
         loader: analyticsLoader,
       },
       {
-        // eslint-disable-next-line 
+        
         path: "simulation/core-engine",
         element: <CoreEngine />,
       },
       {
-        // eslint-disable-next-line 
+        
         path: "simulation/what-if-engine",
         element: <WhatIfEngine />,
       },
       {
-        // eslint-disable-next-line 
+        
         path: "simulation/optimization-engine",
         element: <RecommendationEnine />,
       },
     ],
   },
   {
-    // eslint-disable-next-line 
+    
     path: "/dt/network",
     element: <NetworkRootLayout />,
     children: [
@@ -60,15 +60,15 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-// eslint-disable-next-line 
+
 
 function App() {
   return (
     <>
-      // eslint-disable-next-line 
+      
       <RouterProvider router={router} />
     </>
   );
 }
-// eslint-disable-next-line 
+
 export default App;

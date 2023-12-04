@@ -35,7 +35,7 @@ const WhatIfEngineNetwork = () => {
       console.error('Error:', error);
     }
   };
-
+  const excludedKeys = ['PRB Util%'];
   const PRBData = apiResult && 'PRB Util%' in apiResult
     ? [{ name: 'PRB Util%', y: parseFloat(apiResult['PRB Util%']), color: '#0984e3' },
     { name: '', y: 100 - parseFloat(apiResult['PRB Util%']), color: '#808080' },]
@@ -107,12 +107,14 @@ const WhatIfEngineNetwork = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {Object.entries(apiResult).map(([key, value]) => (
-                      <tr key={key}>
-                        <td>{key}</td>
-                        <td>{value}</td>
-                      </tr>
-                    ))}
+                    {Object.entries(apiResult)
+                      .filter(([key, value]) => !excludedKeys.includes(key)) // Filter out excluded keys
+                      .map(([key, value]) => (
+                        <tr key={key}>
+                          <td>{key}</td>
+                          <td>{value}</td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>

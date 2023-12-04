@@ -22,7 +22,7 @@ const PieChart = (props) => {
         cursor: "pointer",
         dataLabels: {
           enabled: true,
-          format: "<b>{point.name}</b>: {point.percentage:.1f} %",
+          format: "<b>{point.name}</b> {point.percentage:.1f} %",
         },
       },
     },
@@ -31,7 +31,7 @@ const PieChart = (props) => {
         minPointSize: 10,
         innerSize: "50%",
         zMin: 0,
-        name: "Customer Spendings",
+        name:props.chartTitle ||  "Customer Spendings",
         data: props.data,
       },
     ],

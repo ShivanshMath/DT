@@ -84,7 +84,8 @@ const CoreEngine = () => {
       `${CONSTANT.simulation}?month=${month}`
     );
 
-    if (simulationResult.status == 200) {
+    // eslint-disable-next-line 
+    if (simulationResult.status === 200) {
       const jsonResult = await simulationResult.json();
       const { churnPropensity, categories: propCategory } =
         churnPropensityDataFormatter(jsonResult.churn_prop);

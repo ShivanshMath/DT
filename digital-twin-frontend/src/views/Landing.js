@@ -62,6 +62,7 @@ const Landing = () => {
             </div>
           </div>
           <p className={classes["dt-link"]}>
+             // eslint-disable-next-line 
             <a href="#">Learn more about Digital Twins..</a>
           </p>
         </div>

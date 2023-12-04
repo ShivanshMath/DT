@@ -131,9 +131,11 @@ const InputSection = ({ runHandler }) => {
     });
   };
 
+  // eslint-disable-next-line 
   useEffect(() => {
     runRecommender();
-  }, []);
+  }, [runRecommender]);
+  
 
   const disableRun =
     objective &&

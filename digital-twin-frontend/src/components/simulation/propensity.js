@@ -1,5 +1,6 @@
 import { Row, Col } from "antd";
-import { numFormatter } from "../../utils";
+// eslint-disable-next-line 
+// import { numFormatter } from "../../utils";
 import Card from "../UI/Card";
 import classes from "../analytics/analytics.module.css";
 

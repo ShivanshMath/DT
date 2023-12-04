@@ -4,7 +4,7 @@ import AntInput from "../../../components/UI/AntInput/AntInput";
 import { Row, Col, Divider, Spin } from "antd";
 import Card from "../../../components/UI/Card";
 import Chart from "../../../components/Charts/Chart";
-import ProfitImg from "../../../images/profits.png";
+// import ProfitImg from "../../../images/profits.png";
 import Button from "../../../components/UI/button/Button";
 import CONSTANT from "../../../constant";
 import Expenses from "../../../components/simulation/Expenses";

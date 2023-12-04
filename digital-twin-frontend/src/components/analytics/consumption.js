@@ -1,5 +1,5 @@
 import { Row, Col } from "antd";
-// eslint-disable-next-line 
+ 
 // import { useState } from "react";
 import { numFormatter } from "../../utils";
 import Card from "../UI/Card";

@@ -35,15 +35,15 @@ const WhatIfEngineNetwork = () => {
       console.error('Error:', error);
     }
   };
-  
+
   const PRBData = apiResult && 'PRB Util%' in apiResult
     ? [{ name: 'PRB Util%', y: parseFloat(apiResult['PRB Util%']), color: '#0984e3' },
-        {name:'', y: 100 -  parseFloat(apiResult['PRB Util%']), color: '#808080' },]
+    { name: '', y: 100 - parseFloat(apiResult['PRB Util%']), color: '#808080' },]
     : [];
-    const CallDropsData = apiResult && 'PRB Util%' in apiResult
-    ? [{name:'', y: 40, color: '#808080' },
-      { name: 'CallDrop%', y: 60, color: '#0984e3' },
-        ]
+  const CallDropsData = apiResult && 'PRB Util%' in apiResult
+    ? [{ name: '', y: 40, color: '#808080' },
+    { name: 'CallDrop%', y: 60, color: '#0984e3' },
+    ]
     : [];
   return (
     <>
@@ -69,26 +69,28 @@ const WhatIfEngineNetwork = () => {
           </button>
 
           <div className="charts-container">
-            {/* Placeholder for PieChart */}
-            <div className='chart-box' >
-              <div className='card-header'>
-                <h3>PRB Util%</h3>
-              </div>
+            <div className={`chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
               {apiResult && 'PRB Util%' in apiResult && (
-                <div className="chart-container">
-                  <PieChart data={PRBData} chartTitle="PRB Util%"/>
-                </div>
+                <>
+                  <div className='card-header'>
+                    <h3>PRB Util%</h3>
+                  </div>
+                  <div className="chart-container">
+                    <PieChart data={PRBData} chartTitle="PRB Util%" />
+                  </div>
+                </>
               )}
             </div>
-            {/* Placeholder for PieChart */}
-            <div className='chart-box'>
-              <div className='card-header'>
-                <h3>Call Drops%</h3>
-              </div>
+            <div className={`chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
               {apiResult && 'PRB Util%' in apiResult && (
-                <div className="chart-container">
-                  <PieChart data={CallDropsData} chartTitle="CallDrops"/>
-                </div>
+                <>
+                  <div className='card-header'>
+                    <h3>Call Drop%</h3>
+                  </div>
+                  <div className="chart-container">
+                    <PieChart data={CallDropsData} chartTitle="Call Drop%" />
+                  </div>
+                </>
               )}
             </div>
           </div>

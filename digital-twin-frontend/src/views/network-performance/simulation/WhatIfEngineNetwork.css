@@ -73,26 +73,25 @@ header {
 
 .charts-container {
   display: flex;
+
 }
 
-.chart-container {
-  flex: 1;
-  height: 330px;
-  padding: 15px;
-  margin-top: 20px;
-}
+
 .chart-box{
-  width: 100%;
-  padding: 0px;
-  margin-top: 20px;
-  margin-right: 10px;
-  margin-bottom: 20px;
+
+  display: none;
+  width: 48%;
+  margin-right: 2%;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
+.chart-box.show {
+  display: block; 
+}
 .card-header {
+ 
   padding: 15px;
   background: linear-gradient(135deg, #5b247a 0%, #1bcedf 100%);
   color: #fff;
@@ -100,7 +99,7 @@ header {
   border-radius: 8px 8px 0px 0px;
 }
 
-/* Styles for additional charts */
+
 .additional-chart-container {
   margin-top: 20px;
 }

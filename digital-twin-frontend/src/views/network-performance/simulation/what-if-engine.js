@@ -37,12 +37,12 @@ const WhatIfEngineNetwork = () => {
   };
   const excludedKeys = ['PRB Util%'];
   const PRBData = apiResult && 'PRB Util%' in apiResult
-    ? [{ name: 'PRB Util%', y: parseFloat(apiResult['PRB Util%']), color: '#0984e3' },
+    ? [{ name: 'PRB Util%', y: parseFloat(apiResult['PRB Util%']), color: '#eb4e14' },
     { name: '', y: 100 - parseFloat(apiResult['PRB Util%']), color: '#D3D3D3' },]
     : [];
   const CallDropsData = apiResult && 'PRB Util%' in apiResult
-    ? [{ name: '', y: 40, color: '' },
-    { name: 'CallDrop%', y: 60, color: '#0984e3' },
+    ? [{ name: '', y: 40, color: '#D3D3D3' },
+    { name: 'CallDrop%', y: 60, color: '#eb4e14' },
     ]
     : [];
   return (
@@ -67,6 +67,33 @@ const WhatIfEngineNetwork = () => {
           <button type="button" onClick={onClickSubmit} className="button">
             Submit
           </button>
+
+          <div className="charts-container">
+            <div className={`chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+              {apiResult && 'PRB Util%' in apiResult && (
+                <>
+                  <div className='card-header'>
+                    <h3>PRB Util%</h3>
+                  </div>
+                  <div className="chart-container">
+                    <PieChart data={PRBData} chartTitle="PRB Util%" />
+                  </div>
+                </>
+              )}
+            </div>
+            <div className={`chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+              {apiResult && 'PRB Util%' in apiResult && (
+                <>
+                  <div className='card-header'>
+                    <h3>Call Drop%</h3>
+                  </div>
+                  <div className="chart-container">
+                    <PieChart data={CallDropsData} chartTitle="Call Drop%" />
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
 
           <div className="charts-container">
             <div className={`chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>

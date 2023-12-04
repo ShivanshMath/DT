@@ -74,6 +74,7 @@ header {
 
 .charts-container {
   display: flex;
+  margin-bottom: 30px;
 
 }
 

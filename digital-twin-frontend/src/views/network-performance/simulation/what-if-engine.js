@@ -38,10 +38,10 @@ const WhatIfEngineNetwork = () => {
   const excludedKeys = ['PRB Util%'];
   const PRBData = apiResult && 'PRB Util%' in apiResult
     ? [{ name: 'PRB Util%', y: parseFloat(apiResult['PRB Util%']), color: '#0984e3' },
-    { name: '', y: 100 - parseFloat(apiResult['PRB Util%']), color: '#808080' },]
+    { name: '', y: 100 - parseFloat(apiResult['PRB Util%']), color: '#D3D3D3' },]
     : [];
   const CallDropsData = apiResult && 'PRB Util%' in apiResult
-    ? [{ name: '', y: 40, color: '#808080' },
+    ? [{ name: '', y: 40, color: '' },
     { name: 'CallDrop%', y: 60, color: '#0984e3' },
     ]
     : [];

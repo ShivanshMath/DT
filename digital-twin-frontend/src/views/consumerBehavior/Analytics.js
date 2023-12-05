@@ -180,6 +180,7 @@ const Analytics = () => {
                 <Chart
                   data={decileDistribution}
                   categories={decileCategories}
+                  maxY={300}
                 />
               </div>
             </Card>

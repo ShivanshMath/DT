@@ -31,6 +31,7 @@ const Chart = (props) => {
     yAxis: {
       title: "",
       min: minY,
+      max: props.maxY !== undefined ? props.maxY : 100,
       startOnTick: true,
     },
 

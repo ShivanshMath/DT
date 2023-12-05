@@ -55,15 +55,15 @@ const WhatIfEngineNetwork = () => {
     const ResourseUtilData = apiResult && 'PRB Util%' in apiResult
   ? [{
     name: 'Resource Utilization',
-    data: [90,80,40,65,90,87,39,99,79,69],
+    data: [90,80,40,65,90,87,39,99,79,25,88,54],
     color: '#6c5ce7',
     type: 'column',
   }]
   : [];
 
   const ResourceCat = [
-    "00:00", "02:40", "05:20", "08:00", "10:40",
-    "13:20", "16:00", "18:40", "21:20", "23:59"
+    "00:00", "02:00", "04:00", "06:00", "08:00",
+    "10:00", "12:00", "14:00", "16:00", "18:00","20:00","22:00"
   ];
 
   return (
@@ -136,7 +136,7 @@ const WhatIfEngineNetwork = () => {
                     <h3>Resource Utilization%</h3>
                   </div>
                   <div className="chart-container">
-                    <Chart data={ResourseUtilData} categories={ResourceCat}  />
+                    <Chart data={ResourseUtilData} categories={ResourceCat} maxY={100} />
                   </div>
                 </>
               )}

@@ -1,9 +1,9 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import variablepie from "highcharts/modules/variable-pie";
-
+ 
 variablepie(Highcharts);
-
+ 
 const PieChart = (props) => {
   const options = {
     chart: {
@@ -36,7 +36,7 @@ const PieChart = (props) => {
       },
     ],
   };
-
+ 
   return (
     <HighchartsReact
       highcharts={Highcharts}
@@ -45,5 +45,5 @@ const PieChart = (props) => {
     />
   );
 };
-
+ 
 export default PieChart;

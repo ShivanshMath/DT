@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './WhatIfEngineNetwork.css';
 import PieChart from "C:/Users/shivansh.mathur/Downloads/DigitalTwin/digital-twin-frontend/src/components/Charts/Piecharts";
+import Chart from "C:/Users/shivansh.mathur/Downloads/DigitalTwin/digital-twin-frontend/src/components/Charts/Chart";
 
 const WhatIfEngineNetwork = () => {
   const [ueConnected, setUEConnected] = useState('');
@@ -50,11 +51,20 @@ const WhatIfEngineNetwork = () => {
     { name: 'Network Utilization', y: 63, color: '#eb4e14' },
     ]
     : [];
+    
     const ResourseUtilData = apiResult && 'PRB Util%' in apiResult
-    ? [{ name: '', y: 50, color: '#D3D3D3' },
-    { name: 'Resource Utilization', y: 50, color: '#eb4e14' },
-    ]
-    : [];
+  ? [{
+    name: 'Resource Utilization',
+    data: [90,80,40,65,90,87,39,99,79,69],
+    color: '#6c5ce7',
+    type: 'column',
+  }]
+  : [];
+
+  const ResourceCat = [
+    "00:00", "02:40", "05:20", "08:00", "10:40",
+    "13:20", "16:00", "18:40", "21:20", "23:59"
+  ];
 
   return (
     <>
@@ -126,7 +136,7 @@ const WhatIfEngineNetwork = () => {
                     <h3>Resource Utilization%</h3>
                   </div>
                   <div className="chart-container">
-                    <PieChart data={ResourseUtilData} chartTitle="Resource Utilization%" />
+                    <Chart data={ResourseUtilData} categories={ResourceCat}  />
                   </div>
                 </>
               )}

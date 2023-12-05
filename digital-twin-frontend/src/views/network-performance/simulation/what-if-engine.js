@@ -8,7 +8,6 @@ const WhatIfEngineNetwork = () => {
 
   const onClickSubmit = async () => {
     try {
-      console.log(ueConnected)
       const response = await fetch(`http://localhost:5050/lr-model/${ueConnected}`, {
         method: 'GET',
         headers: {

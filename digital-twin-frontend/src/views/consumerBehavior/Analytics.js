@@ -128,7 +128,6 @@ const Analytics = () => {
       setConsumptionData(responseJson);
     }
   };
-  console.log(customerSpendings);
   return (
     <section className={classes["layout"]}>
       {loader && <Spin />}

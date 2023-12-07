@@ -20,9 +20,10 @@ const PieChart = (props) => {
       pie: {
         allowPointSelect: true,
         cursor: "pointer",
+
         dataLabels: {
           enabled: true,
-          format: "<b>{point.name}</b> {point.percentage:.1f} %",
+          format:  "<b>{point.name}</b> {point.percentage:.1f} %",
         },
       },
     },

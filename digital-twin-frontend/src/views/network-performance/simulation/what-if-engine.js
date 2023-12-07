@@ -38,16 +38,16 @@ const WhatIfEngineNetwork = () => {
   const excludedKeys = ['PRB Util%'];
   const PRBData = apiResult && 'PRB Util%' in apiResult
     ? [{ name: 'PRB Util%', y: parseFloat(apiResult['PRB Util%']), color: '#eb4e14' },
-    { name: '', y:100-parseFloat(apiResult['PRB Util%']) , color: '#D3D3D3' },]
+    { name:'', y:100-parseFloat(apiResult['PRB Util%']),dataLabels: {enabled: false} , color: '#D3D3D3' }]
     : [];
   const CallDropsData = apiResult && 'PRB Util%' in apiResult
-    ? [{ name: '', y: 40, color: '#D3D3D3' },
+    ? [{ name: '', y: 40, dataLabels: {enabled: false} , color: '#D3D3D3' },
     { name: 'CallDrop%', y: 60, color: '#eb4e14' },
     ]
     : [];
 
     const NetworkUtilData = apiResult && 'PRB Util%' in apiResult
-    ? [{ name: '', y: 37, color: '#D3D3D3' },
+    ? [{ name: '', y: 37, dataLabels: {enabled: false} , color: '#D3D3D3' },
     { name: 'Network Utilization', y: 63, color: '#eb4e14' },
     ]
     : [];

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './WhatIfEngineNetwork.css';
 import PieChart from "C:/Users/shivansh.mathur/Downloads/DigitalTwin/digital-twin-frontend/src/components/Charts/Piecharts";
 import Chart from "C:/Users/shivansh.mathur/Downloads/DigitalTwin/digital-twin-frontend/src/components/Charts/Chart";
+import StackedBarChart from '../../../components/Charts/BarChart';
 
 const WhatIfEngineNetwork = () => {
   const [ueConnected, setUEConnected] = useState('');
@@ -66,6 +67,8 @@ const WhatIfEngineNetwork = () => {
     "10:00", "12:00", "14:00", "16:00", "18:00","20:00","22:00"
   ];
 
+  const obj = [2,7]
+
   return (
     <>
       <div className="layout" id='Layout'>
@@ -106,10 +109,10 @@ const WhatIfEngineNetwork = () => {
               {apiResult && 'PRB Util%' in apiResult && (
                 <>
                   <div className='card-header'>
-                    <h3>Call Drop%</h3>
+                    <h3>Network Coverage</h3>
                   </div>
                   <div className="chart-container">
-                    <PieChart data={CallDropsData} chartTitle="Call Drop%" />
+                    <StackedBarChart data={obj}/>
                   </div>
                 </>
               )}

@@ -72,8 +72,8 @@ const WhatIfEngineNetwork = () => {
   // ];
 
   const dataspeedVal = apiResult && 'dataspeed' in apiResult ? parseFloat(apiResult['dataspeed']) : 0;
-  const dataspeedVar = [125 - dataspeedVal, dataspeedVal, '#D3D3D3', '#eb4e14',"bar"];
-  const batteryConsumptionVal = [20, 80, '#D3D3D3', '#eb4e14',"bar"];
+  const dataspeedVar = [110 - dataspeedVal, dataspeedVal, '#D3D3D3', '#eb4e14', "bar"];
+  const batteryConsumptionVal = [20, 80, '#D3D3D3', '#eb4e14', "bar"];
 
   return (
     <>
@@ -137,7 +137,7 @@ const WhatIfEngineNetwork = () => {
           </div>
 
           <div className="charts-container">
-            <div className={`chart-box ${apiResult && 'network_utilization' in apiResult ? 'show' : ''}`}>
+            <div className={`col chart-box ${apiResult && 'network_utilization' in apiResult ? 'show' : ''}`}>
               {apiResult && 'network_utilization' in apiResult && (
                 <>
                   <div className='card-header'>
@@ -149,7 +149,7 @@ const WhatIfEngineNetwork = () => {
                 </>
               )}
             </div>
-            <div className={`chart-box ${apiResult && 'dataspeed' in apiResult ? 'show' : ''}`}>
+            <div className={`col chart-box ${apiResult && 'dataspeed' in apiResult ? 'show' : ''}`}>
               {apiResult && 'dataspeed' in apiResult && (
                 <>
                   <div className='card-header'>
@@ -161,7 +161,7 @@ const WhatIfEngineNetwork = () => {
                 </>
               )}
             </div>
-            <div className={` chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+            <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
               {apiResult && 'PRB Util%' in apiResult && (
                 <>
                   <div className='card-header'>
@@ -176,7 +176,7 @@ const WhatIfEngineNetwork = () => {
           </div>
 
           <div className="charts-container">
-            <div className={`chart-box ${apiResult && 'packetloss' in apiResult ? 'show' : ''}`}>
+            <div className={`col chart-box ${apiResult && 'packetloss' in apiResult ? 'show' : ''}`}>
               {apiResult && 'packetloss' in apiResult && (
                 <>
                   <div className='card-header'>
@@ -188,40 +188,75 @@ const WhatIfEngineNetwork = () => {
                 </>
               )}
             </div>
-            <div className={`chart-box ${apiResult && 'network_coverage_map' in apiResult ? 'show' : ''}`}>
-  {apiResult && 'network_coverage_map' in apiResult && (
+            <div className={`col chart-box ${apiResult && 'network_coverage_map' in apiResult ? 'show' : ''}`}>
+              {apiResult && 'network_coverage_map' in apiResult && (
+                <>
+                  <div className='card-header'>
+                    <h3>Network Coverage Map</h3>
+                  </div>
+                  <div className="chart-container">
+                    <div>
+                      <p style={{ paddingTop: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>Max Coverage: 5km</p>
+                    </div>
+                    <svg width="100%" height="100%" viewBox="0 0 100 100">
+                      <circle cx="50%" cy="50%" r="20" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" />
+
+
+                      {apiResult && 'network_coverage_map' in apiResult && (
+                        <>
+                          <circle
+                            cx="50%"
+                            cy="50%"
+                            r={Math.min(4 * apiResult['network_coverage_map'], 20)}
+                            fill="#eb4e14"
+                            fillOpacity="1.0"
+                            strokeWidth="2"
+                          />
+                          <text
+                            x="50%"
+                            y={(50 + Math.min(40, apiResult['network_coverage_map'])).toString()} // Adjust the value to position it outside the inner circle
+                            textAnchor="middle"
+                            alignmentBaseline="middle"
+                            fill="#000" // Black color
+                            fontSize="6" // Adjust the font size as needed
+                          >
+                            {apiResult['network_coverage_map'] + "km"}
+                          </text>
+                        </>
+                      )}
+                    </svg>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+  {apiResult && 'PRB Util%' in apiResult && (
     <>
       <div className='card-header'>
-        <h3>Network Coverage Map</h3>
+        <h3>Time Remaining</h3>
       </div>
       <div className="chart-container">
-        <div>
-        <p style={{paddingTop: 20, paddingLeft:10, fontWeight:'bold', textAlign:'center'}}>Max Coverage:5KM</p>
-        </div>
         <svg width="100%" height="100%" viewBox="0 0 100 100">
-          <circle cx="50%" cy="50%" r="40" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" />
+          <rect x="5%" y="40%" width="90%" height="20%" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" stroke="#eb4e14" />
 
-          
-          {apiResult && 'network_coverage_map' in apiResult && (
+          {apiResult && 'PRB Util%' in apiResult && (
             <>
-              <circle
-                cx="50%"
-                cy="50%"
-                r={Math.min(8 * apiResult['network_coverage_map'], 60)}
-                fill="#eb4e14"
-                fillOpacity="1.0"
-                strokeWidth="2"
-              />
-              <text
-                x="50%"
-                y={(50 + Math.min(40, apiResult['network_coverage_map']) + 5).toString()} // Adjust the value to position it outside the inner circle
-                textAnchor="middle"
-                alignmentBaseline="middle"
-                fill="#000" // Black color
-                fontSize="6" // Adjust the font size as needed
-              >
-                {apiResult['network_coverage_map']}
-              </text>
+              <foreignObject x="5%" y="40%" width="90%" height="20%">
+                <input
+                  type="text"
+                  readOnly
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    border: "none",
+                    textAlign: "center",
+                    fontSize: "10px",
+                    backgroundColor: "transparent",
+                  }}
+                  value="120 Hrs"
+                />
+              </foreignObject>
             </>
           )}
         </svg>
@@ -229,7 +264,6 @@ const WhatIfEngineNetwork = () => {
     </>
   )}
 </div>
-
 
 
           </div>

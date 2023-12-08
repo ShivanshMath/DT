@@ -36,27 +36,27 @@ const WhatIfEngineNetwork = () => {
       console.error('Error:', error);
     }
   };
-  const excludedKeys = ['network_utilization','packetloss','dataspeed','DL Packet Loss Pct','res_uti','network_coverage_map'];
+  const excludedKeys = ['network_utilization', 'packetloss', 'dataspeed', 'DL Packet Loss Pct', 'res_uti', 'network_coverage_map'];
 
   const networkData = apiResult && 'network_utilization' in apiResult
     ? [{ name: 'Network Utilization', y: parseFloat(apiResult['network_utilization']), color: '#eb4e14' },
-    { name:'', y:100-parseFloat(apiResult['network_utilization']),dataLabels: {enabled: false} , color: '#D3D3D3' }]
+    { name: '', y: 100 - parseFloat(apiResult['network_utilization']), dataLabels: { enabled: false }, color: '#D3D3D3' }]
     : [];
 
-  const pl = apiResult && 'packetloss' in apiResult? parseFloat(apiResult['packetloss'])*100 : 0;
+  const pl = apiResult && 'packetloss' in apiResult ? parseFloat(apiResult['packetloss']) * 100 : 0;
   const packetlossData = apiResult && 'packetloss' in apiResult
-    ? [{ name: '', y:100-pl , dataLabels: {enabled: false} , color: '#D3D3D3' },
-    { name: 'PacketLoss', y:  pl, color: '#eb4e14' },
+    ? [{ name: '', y: 100 - pl, dataLabels: { enabled: false }, color: '#D3D3D3' },
+    { name: 'PacketLoss', y: pl, color: '#eb4e14' },
     ]
     : [];
 
-  const resUtil = apiResult && 'res_uti' in apiResult? parseFloat(apiResult['res_uti']): 0;
-  const networkStatus = apiResult && 'res_uti' in apiResult 
-  ?[{name:'Resource Utilization',y: resUtil, color:'#eb4e14'},{name:'',y:100-resUtil, dataLabels:{enabled: false},color:'#D3D3D3'},]:[];
- 
-  const healthStatus = [{name:'Health Status', y:80,color:'#eb4e14'},{name:'',y:20,dataLabels:{enabled: false},color:'#D3D3D3'},]
-    
-  const energyData = [{name:'Energy Efficiency', y:80,color:'#eb4e14'},{name:'',y:20,dataLabels:{enabled: false},color:'#D3D3D3'},]
+  const resUtil = apiResult && 'res_uti' in apiResult ? parseFloat(apiResult['res_uti']) : 0;
+  const networkStatus = apiResult && 'res_uti' in apiResult
+    ? [{ name: 'Resource Utilization', y: resUtil, color: '#eb4e14' }, { name: '', y: 100 - resUtil, dataLabels: { enabled: false }, color: '#D3D3D3' },] : [];
+
+  const healthStatus = [{ name: 'Health Status', y: 80, color: '#eb4e14' }, { name: '', y: 20, dataLabels: { enabled: false }, color: '#D3D3D3' },]
+
+  const energyData = [{ name: 'Energy Efficiency', y: 80, color: '#eb4e14' }, { name: '', y: 20, dataLabels: { enabled: false }, color: '#D3D3D3' },]
   //   const ResourseUtilData = apiResult && 'PRB Util%' in apiResult
   // ? [{
   //   name: 'Resource Utilization',
@@ -71,9 +71,9 @@ const WhatIfEngineNetwork = () => {
   //   "10:00", "12:00", "14:00", "16:00", "18:00","20:00","22:00"
   // ];
 
-  const dataspeedVal = apiResult && 'dataspeed' in apiResult? parseFloat(apiResult['dataspeed']) : 0;
-  const dataspeedVar=[125-dataspeedVal,dataspeedVal,'#D3D3D3','#eb4e14'];
-  const batteryConsumptionVal =[20,80,'#D3D3D3','#eb4e14'];
+  const dataspeedVal = apiResult && 'dataspeed' in apiResult ? parseFloat(apiResult['dataspeed']) : 0;
+  const dataspeedVar = [125 - dataspeedVal, dataspeedVal, '#D3D3D3', '#eb4e14'];
+  const batteryConsumptionVal = [20, 80, '#D3D3D3', '#eb4e14'];
 
   return (
     <>
@@ -156,7 +156,7 @@ const WhatIfEngineNetwork = () => {
                     <h3>Data Speed</h3>
                   </div>
                   <div className="chart-container">
-                    <StackedBarChart data={dataspeedVar}/>
+                    <StackedBarChart data={dataspeedVar} />
                   </div>
                 </>
               )}
@@ -174,7 +174,7 @@ const WhatIfEngineNetwork = () => {
               )}
             </div>
           </div>
-          
+
           <div className="charts-container">
             <div className={`chart-box ${apiResult && 'packetloss' in apiResult ? 'show' : ''}`}>
               {apiResult && 'packetloss' in apiResult && (
@@ -188,7 +188,50 @@ const WhatIfEngineNetwork = () => {
                 </>
               )}
             </div>
-            
+            <div className={`chart-box ${apiResult && 'network_coverage_map' in apiResult ? 'show' : ''}`}>
+  {apiResult && 'network_coverage_map' in apiResult && (
+    <>
+      <div className='card-header'>
+        <h3>Network Coverage Map</h3>
+      </div>
+      <div className="chart-container">
+        <div>
+        <p style={{paddingTop: 20, paddingLeft:10, fontWeight:'bold', textAlign:'center'}}>Max Coverage:5KM</p>
+        </div>
+        <svg width="100%" height="100%" viewBox="0 0 100 100">
+          <circle cx="50%" cy="50%" r="40" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" />
+
+          
+          {apiResult && 'network_coverage_map' in apiResult && (
+            <>
+              <circle
+                cx="50%"
+                cy="50%"
+                r={Math.min(8 * apiResult['network_coverage_map'], 60)}
+                fill="#eb4e14"
+                fillOpacity="1.0"
+                strokeWidth="2"
+              />
+              <text
+                x="50%"
+                y={(50 + Math.min(40, apiResult['network_coverage_map']) + 5).toString()} // Adjust the value to position it outside the inner circle
+                textAnchor="middle"
+                alignmentBaseline="middle"
+                fill="#000" // Black color
+                fontSize="6" // Adjust the font size as needed
+              >
+                {apiResult['network_coverage_map']}
+              </text>
+            </>
+          )}
+        </svg>
+      </div>
+    </>
+  )}
+</div>
+
+
+
           </div>
           <div className="result-container">
             {apiResult && (

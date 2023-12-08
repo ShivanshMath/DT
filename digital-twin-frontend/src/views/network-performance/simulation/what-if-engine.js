@@ -203,7 +203,7 @@ const WhatIfEngineNetwork = () => {
                   </thead>
                   <tbody>
                     {Object.entries(apiResult)
-                      .filter(([key, value]) => !excludedKeys.includes(key)) // Filter out excluded keys
+                      .filter(([key, value]) => !excludedKeys.includes(key) && parseFloat(value) > 0.00) // Filter out excluded keys
                       .map(([key, value]) => (
                         <tr key={key}>
                           <td>{key}</td>

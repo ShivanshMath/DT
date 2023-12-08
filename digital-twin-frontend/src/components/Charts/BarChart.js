@@ -30,6 +30,7 @@ const StackedBarChart = (props) => {
       plotOptions: {
         series: {
           stacking: 'normal',
+          pointWidth:45,
         },
       },
       series: [

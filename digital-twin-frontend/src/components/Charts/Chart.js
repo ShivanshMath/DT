@@ -20,7 +20,7 @@ const Chart = (props) => {
       zoomType: "x",
     },
     title: {
-      text: "",
+      text: ""
     },
     credits: {
       enabled: false,

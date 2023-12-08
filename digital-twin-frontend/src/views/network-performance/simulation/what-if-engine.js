@@ -72,8 +72,8 @@ const WhatIfEngineNetwork = () => {
   // ];
 
   const dataspeedVal = apiResult && 'dataspeed' in apiResult ? parseFloat(apiResult['dataspeed']) : 0;
-  const dataspeedVar = [125 - dataspeedVal, dataspeedVal, '#D3D3D3', '#eb4e14'];
-  const batteryConsumptionVal = [20, 80, '#D3D3D3', '#eb4e14'];
+  const dataspeedVar = [125 - dataspeedVal, dataspeedVal, '#D3D3D3', '#eb4e14',"bar"];
+  const batteryConsumptionVal = [20, 80, '#D3D3D3', '#eb4e14',"bar"];
 
   return (
     <>

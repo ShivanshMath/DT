@@ -8,7 +8,7 @@ const StackedBarChart = (props) => {
     
     const chartOptions = {
       chart: {
-        type: 'bar',
+        type: props.data[4]
       },
       title: {
         text: '',
@@ -20,9 +20,11 @@ const StackedBarChart = (props) => {
       yAxis: {
         min: 0,
         max:props.data[0] + props.data[1],
-        title: {
-          text: 'Total',
+        labels: {
+          enabled:false
         },
+        title:"",
+        gridLineWidth: 0
       },
       legend: {
         reversed: true,
@@ -31,6 +33,9 @@ const StackedBarChart = (props) => {
         series: {
           stacking: 'normal',
           pointWidth:45,
+          dataLabels: {
+            enabled: true
+        }
         },
       },
       series: [
@@ -44,7 +49,11 @@ const StackedBarChart = (props) => {
           data: [props.data[1]],
           color: props.data[3] || 'green',
         },
+        
       ],
+      credits: {
+        enabled: false
+      }
     };
   
     return (

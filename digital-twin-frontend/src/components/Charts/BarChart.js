@@ -19,7 +19,7 @@ const StackedBarChart = (props) => {
       },
       yAxis: {
         min: 0,
-        max:props.data[0]+props.data[1],
+        max:props.data[0] + props.data[1],
         title: {
           text: 'Total',
         },

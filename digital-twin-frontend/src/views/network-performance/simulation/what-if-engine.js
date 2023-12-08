@@ -72,7 +72,7 @@ const WhatIfEngineNetwork = () => {
   // ];
 
   const dataspeedVal = apiResult && 'dataspeed' in apiResult? parseFloat(apiResult['dataspeed']) : 0;
-  const dataspeedVar=[120-dataspeedVal,dataspeedVal,'#D3D3D3','#eb4e14'];
+  const dataspeedVar=[125-dataspeedVal,dataspeedVal,'#D3D3D3','#eb4e14'];
   const batteryConsumptionVal =[20,80,'#D3D3D3','#eb4e14'];
 
   return (
@@ -161,8 +161,20 @@ const WhatIfEngineNetwork = () => {
                 </>
               )}
             </div>
+            <div className={` chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+              {apiResult && 'PRB Util%' in apiResult && (
+                <>
+                  <div className='card-header'>
+                    <h3>Battery Consumption%</h3>
+                  </div>
+                  <div className="chart-container">
+                    <StackedBarChart data={batteryConsumptionVal} />
+                  </div>
+                </>
+              )}
+            </div>
           </div>
-
+          
           <div className="charts-container">
             <div className={`chart-box ${apiResult && 'packetloss' in apiResult ? 'show' : ''}`}>
               {apiResult && 'packetloss' in apiResult && (
@@ -176,18 +188,7 @@ const WhatIfEngineNetwork = () => {
                 </>
               )}
             </div>
-            <div className={`chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
-              {apiResult && 'PRB Util%' in apiResult && (
-                <>
-                  <div className='card-header'>
-                    <h3>Battery Consumption%</h3>
-                  </div>
-                  <div className="chart-container">
-                    <StackedBarChart data={batteryConsumptionVal} />
-                  </div>
-                </>
-              )}
-            </div>
+            
           </div>
           <div className="result-container">
             {apiResult && (

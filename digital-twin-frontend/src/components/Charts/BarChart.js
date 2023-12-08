@@ -5,7 +5,7 @@ import variablepie from "highcharts/modules/variable-pie";
 variablepie(Highcharts);
 
 const StackedBarChart = (props) => {
-    // Sample data for the stacked bar chart
+    
     const chartOptions = {
       chart: {
         type: 'bar',
@@ -36,10 +36,12 @@ const StackedBarChart = (props) => {
         {
           name: 'Total Coverage',
           data: [props.data[0]+props.data[1]],
+          color: props.data[2] || 'blue',
         },
         {
           name: 'Current Coverage',
           data: [props.data[1]],
+          color: props.data[3] || 'green',
         },
       ],
     };

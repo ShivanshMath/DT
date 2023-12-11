@@ -199,7 +199,7 @@ const WhatIfEngineNetwork = () => {
                       <p style={{ paddingTop: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>Max Coverage: 5km</p>
                     </div>
                     <svg width="100%" height="100%" viewBox="0 0 100 100">
-                      <circle cx="50%" cy="50%" r="20" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" />
+                      <circle cx="50%" cy="50%" r="35" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" />
 
 
                       {apiResult && 'network_coverage_map' in apiResult && (
@@ -207,7 +207,7 @@ const WhatIfEngineNetwork = () => {
                           <circle
                             cx="50%"
                             cy="50%"
-                            r={Math.min(4 * apiResult['network_coverage_map'], 20)}
+                            r={Math.min(7 * apiResult['network_coverage_map'], 20)}
                             fill="#eb4e14"
                             fillOpacity="1.0"
                             strokeWidth="2"
@@ -231,39 +231,39 @@ const WhatIfEngineNetwork = () => {
             </div>
 
             <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
-  {apiResult && 'PRB Util%' in apiResult && (
-    <>
-      <div className='card-header'>
-        <h3>Time Remaining</h3>
-      </div>
-      <div className="chart-container">
-        <svg width="100%" height="100%" viewBox="0 0 100 100">
-          <rect x="5%" y="40%" width="90%" height="20%" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" stroke="#eb4e14" />
+              {apiResult && 'PRB Util%' in apiResult && (
+                <>
+                  <div className='card-header'>
+                    <h3>Time Remaining</h3>
+                  </div>
+                  <div className="chart-container">
+                    <svg width="100%" height="100%" viewBox="0 0 100 100">
+                      <rect x="5%" y="40%" width="90%" height="20%" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" stroke="#eb4e14" />
 
-          {apiResult && 'PRB Util%' in apiResult && (
-            <>
-              <foreignObject x="5%" y="40%" width="90%" height="20%">
-                <input
-                  type="text"
-                  readOnly
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "none",
-                    textAlign: "center",
-                    fontSize: "10px",
-                    backgroundColor: "transparent",
-                  }}
-                  value="120 Hrs"
-                />
-              </foreignObject>
-            </>
-          )}
-        </svg>
-      </div>
-    </>
-  )}
-</div>
+                      {apiResult && 'PRB Util%' in apiResult && (
+                        <>
+                          <foreignObject x="5%" y="40%" width="90%" height="20%">
+                            <input
+                              type="text"
+                              readOnly
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                border: "none",
+                                textAlign: "center",
+                                fontSize: "10px",
+                                backgroundColor: "transparent",
+                              }}
+                              value="120 Hrs"
+                            />
+                          </foreignObject>
+                        </>
+                      )}
+                    </svg>
+                  </div>
+                </>
+              )}
+            </div>
 
 
           </div>

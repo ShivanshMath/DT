@@ -74,6 +74,10 @@ const WhatIfEngineNetwork = () => {
   const dataspeedVal = apiResult && 'dataspeed' in apiResult ? parseFloat(apiResult['dataspeed']) : 0;
   const dataspeedVar = [110 - dataspeedVal, dataspeedVal, '#D3D3D3', '#eb4e14', "bar"];
   const batteryConsumptionVal = [20, 80, '#D3D3D3', '#eb4e14', "bar"];
+  const quesimpVal = [20, 80, '#D3D3D3', '#eb4e14', "column"]
+
+  const qesVal = apiResult && 'qes_im' in apiResult ? parseFloat(apiResult['qes_im'])*100 : 0;
+  const qesChart = [8-qesVal,qesVal,'#D3D3D3', '#eb4e14', "column"]
 
   return (
     <>
@@ -173,6 +177,24 @@ const WhatIfEngineNetwork = () => {
                 </>
               )}
             </div>
+            <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+              {apiResult && 'PRB Util%' in apiResult && (
+                <>
+                  <div className='card-header'>
+                    <h3>QES Impact%</h3>
+                  </div>
+                  <div className="chart-container" style={{ display: 'flex' , flexWrap: 'wrap'}}>
+                    <div style={{ flex: '1 1 100%', maxWidth: '30%' }}>
+                      <StackedBarChart data={quesimpVal} style={{ width: '50%', maxWidth: '50px' }} />
+                    </div>
+                    <div style={{ flex: '1 1 100%', maxWidth: '60%'}} >
+                      <StackedBarChart data={qesChart} style={{ width: '50%', maxWidth: '50px' }}/>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
           </div>
 
           <div className="charts-container">
@@ -199,17 +221,17 @@ const WhatIfEngineNetwork = () => {
                       {/* <p style={{ paddingTop: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>Max Coverage: 5</p> */}
                     </div>
                     <svg width="100%" height="100%" viewBox="0 0 100 100">
-                      <circle cx="50%" cy="50%" r="35" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2"/>
-                        <text 
+                      <circle cx="50%" cy="50%" r="35" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" />
+                      <text
                         x="50%"
                         y="23%"
                         textAnchor="middle"
                         alignmentBaseline="middle"
-                        fill="#000" 
-                        fontSize="6" 
-                        > 
-                        {5} 
-                        </text>
+                        fill="#000"
+                        fontSize="6"
+                      >
+                        {5}
+                      </text>
 
                       {apiResult && 'network_coverage_map' in apiResult && (
                         <>
@@ -229,7 +251,7 @@ const WhatIfEngineNetwork = () => {
                             fill="#000" // Black color
                             fontSize="6" // Adjust the font size as needed
                           >
-                            {apiResult['network_coverage_map'] }
+                            {apiResult['network_coverage_map']}
                           </text>
                         </>
                       )}

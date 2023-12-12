@@ -102,7 +102,7 @@ const WhatIfEngineNetwork = () => {
               {apiResult && 'network_utilization' in apiResult && (
                 <>
                   <div className='card-header'>
-                    <h3>Resource Utilization</h3>
+                    <h3>Resource Utilization%</h3>
                   </div>
                   <div className="chart-container">
                     <PieChart data={networkStatus} chartTitle="Resource Utilization" />
@@ -114,7 +114,7 @@ const WhatIfEngineNetwork = () => {
               {apiResult && 'network_utilization' in apiResult && (
                 <>
                   <div className='card-header'>
-                    <h3>Health Status</h3>
+                    <h3>Health Status%</h3>
                   </div>
                   <div className="chart-container">
                     <PieChart data={healthStatus} chartTitle="Health Status" />
@@ -126,7 +126,7 @@ const WhatIfEngineNetwork = () => {
               {apiResult && 'network_utilization' in apiResult && (
                 <>
                   <div className='card-header'>
-                    <h3>Energy Efficiency</h3>
+                    <h3>Energy Efficiency%</h3>
                   </div>
                   <div className="chart-container">
                     <PieChart data={energyData} chartTitle="Energy Efficiency" />
@@ -153,7 +153,7 @@ const WhatIfEngineNetwork = () => {
               {apiResult && 'dataspeed' in apiResult && (
                 <>
                   <div className='card-header'>
-                    <h3>Data Speed</h3>
+                    <h3>Data Speed(Mbps)</h3>
                   </div>
                   <div className="chart-container">
                     <StackedBarChart data={dataspeedVar} />
@@ -165,7 +165,7 @@ const WhatIfEngineNetwork = () => {
               {apiResult && 'PRB Util%' in apiResult && (
                 <>
                   <div className='card-header'>
-                    <h3>Battery Consumption%</h3>
+                    <h3>Avg Battery Consumption%</h3>
                   </div>
                   <div className="chart-container">
                     <StackedBarChart data={batteryConsumptionVal} />
@@ -192,15 +192,24 @@ const WhatIfEngineNetwork = () => {
               {apiResult && 'network_coverage_map' in apiResult && (
                 <>
                   <div className='card-header'>
-                    <h3>Network Coverage Map</h3>
+                    <h3>Network Coverage Map(KM)</h3>
                   </div>
                   <div className="chart-container">
                     <div>
-                      <p style={{ paddingTop: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>Max Coverage: 5km</p>
+                      {/* <p style={{ paddingTop: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>Max Coverage: 5</p> */}
                     </div>
                     <svg width="100%" height="100%" viewBox="0 0 100 100">
-                      <circle cx="50%" cy="50%" r="35" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" />
-
+                      <circle cx="50%" cy="50%" r="35" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2"/>
+                        <text 
+                        x="50%"
+                        y="23%"
+                        textAnchor="middle"
+                        alignmentBaseline="middle"
+                        fill="#000" 
+                        fontSize="6" 
+                        > 
+                        {5} 
+                        </text>
 
                       {apiResult && 'network_coverage_map' in apiResult && (
                         <>
@@ -220,7 +229,7 @@ const WhatIfEngineNetwork = () => {
                             fill="#000" // Black color
                             fontSize="6" // Adjust the font size as needed
                           >
-                            {apiResult['network_coverage_map'] + "km"}
+                            {apiResult['network_coverage_map'] }
                           </text>
                         </>
                       )}
@@ -234,7 +243,7 @@ const WhatIfEngineNetwork = () => {
               {apiResult && 'PRB Util%' in apiResult && (
                 <>
                   <div className='card-header'>
-                    <h3>Time Remaining</h3>
+                    <h3>Time To Maintenance(Hours)</h3>
                   </div>
                   <div className="chart-container">
                     <svg width="100%" height="100%" viewBox="0 0 100 100">
@@ -254,7 +263,7 @@ const WhatIfEngineNetwork = () => {
                                 fontSize: "10px",
                                 backgroundColor: "transparent",
                               }}
-                              value="120 Hrs"
+                              value="120"
                             />
                           </foreignObject>
                         </>

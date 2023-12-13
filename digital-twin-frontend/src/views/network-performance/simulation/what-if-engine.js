@@ -36,7 +36,7 @@ const WhatIfEngineNetwork = () => {
       console.error('Error:', error);
     }
   };
-  const excludedKeys = ['network_utilization', 'packetloss', 'dataspeed', 'DL Packet Loss Pct', 'res_uti', 'network_coverage_map'];
+  const excludedKeys = ['qes_im','network_utilization', 'packetloss', 'dataspeed', 'DL Packet Loss Pct', 'res_uti', 'network_coverage_map'];
 
   const networkData = apiResult && 'network_utilization' in apiResult
     ? [{ name: 'Network Utilization', y: parseFloat(apiResult['network_utilization']), color: '#eb4e14' },
@@ -177,24 +177,6 @@ const WhatIfEngineNetwork = () => {
                 </>
               )}
             </div>
-            <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
-              {apiResult && 'PRB Util%' in apiResult && (
-                <>
-                  <div className='card-header'>
-                    <h3>QES Impact%</h3>
-                  </div>
-                  <div className="chart-container" style={{ display: 'flex' , flexWrap: 'wrap'}}>
-                    <div style={{ flex: '1 1 100%', maxWidth: '30%' }}>
-                      <StackedBarChart data={quesimpVal} style={{ width: '50%', maxWidth: '50px' }} />
-                    </div>
-                    <div style={{ flex: '1 1 100%', maxWidth: '60%'}} >
-                      <StackedBarChart data={qesChart} style={{ width: '50%', maxWidth: '50px' }}/>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-
           </div>
 
           <div className="charts-container">
@@ -298,10 +280,14 @@ const WhatIfEngineNetwork = () => {
 
 
           </div>
+          <div className="charts-container">
+          <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+          <div className='card-header'>
+                    <h3>Simulation Result:</h3>
+                  </div>
           <div className="result-container">
             {apiResult && (
               <div>
-                <h2 className="result-title">Simulation Result:</h2>
                 <table className="result-table">
                   <thead>
                     <tr>
@@ -322,6 +308,25 @@ const WhatIfEngineNetwork = () => {
                 </table>
               </div>
             )}
+          </div>
+          </div>
+          <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+              {apiResult && 'PRB Util%' in apiResult && (
+                <>
+                  <div className='card-header'>
+                    <h3>QES Impact%</h3>
+                  </div>
+                  <div className="chart-container" style={{ display: 'flex' , flexWrap: 'wrap'}}>
+                    <div style={{ flex: '1 1 100%', maxWidth: '50%' }}>
+                      <StackedBarChart data={quesimpVal} style={{ width: '50%', maxWidth: '50px' }} />
+                    </div>
+                    <div style={{ flex: '1 1 100%', maxWidth: '50%'}} >
+                      <StackedBarChart data={qesChart} style={{ width: '50%', maxWidth: '50px' }}/>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </main>
       </div>

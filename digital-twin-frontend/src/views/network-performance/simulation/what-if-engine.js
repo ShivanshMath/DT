@@ -312,11 +312,29 @@ const WhatIfEngineNetwork = () => {
               <div className="result-container">
                 {apiResult && (
                   <div>
-                    <Chart
+                    {/* <Chart
                       data={KPIval}
                       categories={KPIkey}
                       minY={0}
-                    />
+                    /> */}
+                    <table className="result-table">
+                  <thead>
+                    <tr>
+                      <th>KPI</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.entries(apiResult)
+                      .filter(([key, value]) => !excludedKeys.includes(key) && parseFloat(value) > 0.00) // Filter out excluded keys
+                      .map(([key, value]) => (
+                        <tr key={key}>
+                          <td>{key}</td>
+                          <td>{value}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
                   </div>
                 )}
               </div>

@@ -36,51 +36,52 @@ const WhatIfEngineNetwork = () => {
       console.error('Error:', error);
     }
   };
-  const excludedKeys = ['health_sta','battery_com','time_mana','energy_eff','qes_im','network_utilization', 'packetloss', 'dataspeed', 'DL Packet Loss Pct', 'res_uti', 'network_coverage_map'];
+  const excludedKeys = ['health_sta', 'battery_com', 'time_mana', 'energy_eff', 'qes_im', 'network_utilization', 'packetloss', 'dataspeed', 'DL Packet Loss Pct', 'res_uti', 'network_coverage_map'];
 
   const networkData = apiResult && 'network_utilization' in apiResult
-    ? [{ name: 'Network Utilization',sliced:'true', y: parseFloat(apiResult['network_utilization']), color: '#eb4e14' },
+    ? [{ name: 'Network Utilization', sliced: 'true', y: parseFloat(apiResult['network_utilization']), color: '#eb4e14' },
     { name: '', y: 100 - parseFloat(apiResult['network_utilization']), dataLabels: { enabled: false }, color: '#D3D3D3' }]
     : [];
 
   const pl = apiResult && 'packetloss' in apiResult ? parseFloat(apiResult['packetloss']) * 100 : 0;
   const packetlossData = apiResult && 'packetloss' in apiResult
     ? [{ name: '', y: 100 - pl, dataLabels: { enabled: false }, color: '#D3D3D3' },
-    { name: 'PacketLoss', sliced:'true',y: pl, color: '#eb4e14' },
+    { name: 'PacketLoss', sliced: 'true', y: pl, color: '#eb4e14' },
     ]
     : [];
 
   const resUtil = apiResult && 'res_uti' in apiResult ? parseFloat(apiResult['res_uti']) : 0;
   const networkStatus = apiResult && 'res_uti' in apiResult
-    ? [{ name: 'Resource Utilization',sliced: 'true', y: resUtil, color: '#eb4e14' }, { name: '', y: 100 - resUtil, dataLabels: { enabled: false }, color: '#D3D3D3' },] : [];
+    ? [{ name: 'Resource Utilization', sliced: 'true', y: resUtil, color: '#eb4e14' }, { name: '', y: 100 - resUtil, dataLabels: { enabled: false }, color: '#D3D3D3' },] : [];
 
-  const hs = apiResult && 'health_sta' in apiResult ? parseFloat(apiResult['health_sta']): 0;
-  const healthStatus = [{ name: 'Health Status', sliced :'true',y: hs,  color: '#eb4e14' }, { name: '', y: 100-hs, dataLabels: { enabled: false }, color: '#D3D3D3' },]
-  const ef = apiResult && 'energy_eff' in apiResult ? parseFloat(apiResult['energy_eff'])  : 0;
-  const energyData = [{ name: 'Energy Efficiency', sliced:'true',y: ef, color: '#eb4e14' }, { name: '', y: 100-ef, dataLabels: { enabled: false }, color: '#D3D3D3' },]
+  const hs = apiResult && 'health_sta' in apiResult ? parseFloat(apiResult['health_sta']) : 0;
+  const healthStatus = [{ name: 'Health Status', sliced: 'true', y: hs, color: '#eb4e14' }, { name: '', y: 100 - hs, dataLabels: { enabled: false }, color: '#D3D3D3' },]
+  const ef = apiResult && 'energy_eff' in apiResult ? parseFloat(apiResult['energy_eff']) : 0;
+  const energyData = [{ name: 'Energy Efficiency', sliced: 'true', y: ef, color: '#eb4e14' }, { name: '', y: 100 - ef, dataLabels: { enabled: false }, color: '#D3D3D3' },]
 
 
-  const KPIvalue=[];
-  const KPIkey=[];
+  const KPIvalue = [];
+  const KPIkey = [];
 
   Object.entries(apiResult || {})
-  .filter(([key, value]) => !excludedKeys.includes(key) && parseFloat(value) > 0.00)
-  .forEach(([key, value]) => {
-    KPIkey.push(key);
-    if(parseFloat(value) > 1)
-    {KPIvalue.push(parseFloat(value));}
-    else
-    {
-      KPIvalue.push(parseFloat(value)*100);
-    }});
+    .filter(([key, value]) => !excludedKeys.includes(key) && parseFloat(value) > 0.00)
+    .forEach(([key, value]) => {
+      KPIkey.push(key);
+      if (parseFloat(value) > 1) {
+        KPIvalue.push(parseFloat(value));
+      }
+      else {
+        KPIvalue.push(parseFloat(value) * 100);
+      }
+    });
 
-    const KPIval = apiResult && 'PRB Util%' in apiResult 
+  const KPIval = apiResult && 'PRB Util%' in apiResult
     ? [
       {
-        name:'KPI Results',
+        name: 'KPI Results',
         data: KPIvalue,
-        color:'#eb4e14',
-        type:'column',
+        color: '#eb4e14',
+        type: 'column',
       }
     ]
     : [];
@@ -88,18 +89,18 @@ const WhatIfEngineNetwork = () => {
   const dataspeedVal = apiResult && 'dataspeed' in apiResult ? parseFloat(apiResult['dataspeed']) : 0;
 
 
-  const dataspeedVar = [110 - dataspeedVal, dataspeedVal,'Current Speed','Max Speed', '#D3D3D3', '#eb4e14', "bar"];
+  const dataspeedVar = [110 - dataspeedVal, dataspeedVal, 'Current Speed', 'Max Speed', '#D3D3D3', '#eb4e14', "bar"];
   const bc = apiResult && 'battery_com' in apiResult ? parseFloat(apiResult['battery_com']) : 0;
-  const batteryConsumptionVal = [100-bc, bc,'Current Consumption','Max Consumption', '#D3D3D3', '#eb4e14', "bar"];
+  const batteryConsumptionVal = [100 - bc, bc, 'Current Consumption', 'Max Consumption', '#D3D3D3', '#eb4e14', "bar"];
 
 
 
-  const quesimpVal = [20, 80, 'Current Coverage','Total Coverage', '#D3D3D3', '#eb4e14', "column"]
-  const qesVal = apiResult && 'qes_im' in apiResult ? parseFloat(apiResult['qes_im'])*100 : 0;
-  const qesChart = [8-qesVal,qesVal,'Current Impact','Max Impact', '#D3D3D3', '#eb4e14', "column"]
+  const quesimpVal = [20, 80, 'Current Coverage', 'Total Coverage', '#D3D3D3', '#eb4e14', "column"]
+  const qesVal = apiResult && 'qes_im' in apiResult ? parseFloat(apiResult['qes_im']) * 100 : 0;
+  const qesChart = [8 - qesVal, qesVal, 'Current Impact', 'Max Impact', '#D3D3D3', '#eb4e14', "column"]
 
-   const ttm =apiResult && 'time_mana' in apiResult ? apiResult['time_mana'] : "120";
-   const displayTtm = Number.isInteger(parseFloat(ttm)) ? String(parseInt(ttm)) : String(parseFloat(ttm));
+  const ttm = apiResult && 'time_mana' in apiResult ? apiResult['time_mana'] : "120";
+  const displayTtm = Number.isInteger(parseFloat(ttm)) ? String(parseInt(ttm)) : String(parseFloat(ttm));
 
 
   return (
@@ -243,7 +244,7 @@ const WhatIfEngineNetwork = () => {
                           <circle
                             cx="50%"
                             cy="50%"
-                            r={Math.min((40/12)* apiResult['network_coverage_map'], 40)}
+                            r={Math.min((40 / 12) * apiResult['network_coverage_map'], 40)}
                             fill="#eb4e14"
                             fillOpacity="1.0"
                             strokeWidth="2"
@@ -304,34 +305,34 @@ const WhatIfEngineNetwork = () => {
 
           </div>
           <div className="charts-container">
-          <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
-          <div className='card-header'>
-                    <h3>Simulation Result:</h3>
-                  </div>
-          <div className="result-container">
-            {apiResult && (
-              <div>
-                <Chart
-                  data={KPIval}
-                  categories={KPIkey}
-                  minY={0}
-                  />
+            <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+              <div className='card-header'>
+                <h3>Simulation Result:</h3>
               </div>
-            )}
-          </div>
-          </div>
-          <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
+              <div className="result-container">
+                {apiResult && (
+                  <div>
+                    <Chart
+                      data={KPIval}
+                      categories={KPIkey}
+                      minY={0}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className={`col chart-box ${apiResult && 'PRB Util%' in apiResult ? 'show' : ''}`}>
               {apiResult && 'PRB Util%' in apiResult && (
                 <>
                   <div className='card-header'>
                     <h3>QES Impact%</h3>
                   </div>
-                  <div className="chart-container" style={{ display: 'flex' , flexWrap: 'wrap'}}>
+                  <div className="chart-container" style={{ display: 'flex', flexWrap: 'wrap' }}>
                     <div style={{ flex: '1 1 100%', maxWidth: '50%' }}>
                       <StackedBarChart data={quesimpVal} style={{ width: '50%', maxWidth: '50px' }} />
                     </div>
-                    <div style={{ flex: '1 1 100%', maxWidth: '50%'}} >
-                      <StackedBarChart data={qesChart} style={{ width: '50%', maxWidth: '50px' }}/>
+                    <div style={{ flex: '1 1 100%', maxWidth: '50%' }} >
+                      <StackedBarChart data={qesChart} style={{ width: '50%', maxWidth: '50px' }} />
                     </div>
                   </div>
                 </>

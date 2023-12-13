@@ -67,7 +67,12 @@ const WhatIfEngineNetwork = () => {
   .filter(([key, value]) => !excludedKeys.includes(key) && parseFloat(value) > 0.00)
   .forEach(([key, value]) => {
     KPIkey.push(key);
-    KPIvalue.push(parseFloat(value));});
+    if(parseFloat(value) > 1)
+    {KPIvalue.push(parseFloat(value));}
+    else
+    {
+      KPIvalue.push(parseFloat(value)*100);
+    }});
 
     const KPIval = apiResult && 'PRB Util%' in apiResult 
     ? [

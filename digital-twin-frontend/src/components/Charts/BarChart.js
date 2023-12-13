@@ -8,7 +8,7 @@ const StackedBarChart = (props) => {
     
     const chartOptions = {
       chart: {
-        type: props.data[4]
+        type: props.data[6]
       },
       title: {
         text: '',
@@ -40,14 +40,14 @@ const StackedBarChart = (props) => {
       },
       series: [
         {
-          name: 'Total Coverage',
+          name: props.data[3],
           data: [props.data[0]+props.data[1]],
-          color: props.data[2] || 'blue',
+          color: props.data[4] || 'blue',
         },
         {
-          name: 'Current Coverage',
+          name: props.data[2],
           data: [props.data[1]],
-          color: props.data[3] || 'green',
+          color: props.data[5] || 'green',
         },
         
       ],

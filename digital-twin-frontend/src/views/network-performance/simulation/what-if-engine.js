@@ -72,12 +72,12 @@ const WhatIfEngineNetwork = () => {
   // ];
 
   const dataspeedVal = apiResult && 'dataspeed' in apiResult ? parseFloat(apiResult['dataspeed']) : 0;
-  const dataspeedVar = [110 - dataspeedVal, dataspeedVal, '#D3D3D3', '#eb4e14', "bar"];
-  const batteryConsumptionVal = [20, 80, '#D3D3D3', '#eb4e14', "bar"];
-  const quesimpVal = [20, 80, '#D3D3D3', '#eb4e14', "column"]
+  const dataspeedVar = [110 - dataspeedVal, dataspeedVal,'Current Speed','Max Speed', '#D3D3D3', '#eb4e14', "bar"];
+  const batteryConsumptionVal = [20, 80,'Current Consumption','Max Consumption', '#D3D3D3', '#eb4e14', "bar"];
+  const quesimpVal = [20, 80, 'Current Coverage','Total Coverage', '#D3D3D3', '#eb4e14', "column"]
 
   const qesVal = apiResult && 'qes_im' in apiResult ? parseFloat(apiResult['qes_im'])*100 : 0;
-  const qesChart = [8-qesVal,qesVal,'#D3D3D3', '#eb4e14', "column"]
+  const qesChart = [8-qesVal,qesVal,'Current Impact','Max Impact', '#D3D3D3', '#eb4e14', "column"]
 
   return (
     <>

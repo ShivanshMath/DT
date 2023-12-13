@@ -66,16 +66,25 @@ const WhatIfEngineNetwork = () => {
   // }]
   // : [];
 
-  const KPIkey = [];
-  const KPIvalue = [];
+  const KPIvalue=[];
+  const KPIkey=[];
 
+  Object.entries(apiResult || {})
+  .filter(([key, value]) => !excludedKeys.includes(key) && parseFloat(value) > 0.00)
+  .forEach(([key, value]) => {
+    KPIkey.push(key);
+    KPIvalue.push(parseFloat(value));});
 
-  // const ResourceCat = [
-  //   "00:00", "02:00", "04:00", "06:00", "08:00",
-  //   "10:00", "12:00", "14:00", "16:00", "18:00","20:00","22:00"
-  // ];
-
-    
+    const KPIval = apiResult && 'PRB Util%' in apiResult 
+    ? [
+      {
+        name:'KPI Results',
+        data: KPIvalue,
+        color:'#eb4e14',
+        type:'column',
+      }
+    ]
+    : [];
 
   const dataspeedVal = apiResult && 'dataspeed' in apiResult ? parseFloat(apiResult['dataspeed']) : 0;
 
@@ -299,24 +308,10 @@ const WhatIfEngineNetwork = () => {
           <div className="result-container">
             {apiResult && (
               <div>
-                <table className="result-table">
-                  <thead>
-                    <tr>
-                      <th>KPI</th>
-                      <th>Value</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Object.entries(apiResult)
-                      .filter(([key, value]) => !excludedKeys.includes(key) && parseFloat(value) > 0.00) // Filter out excluded keys
-                      .map(([key, value]) => (
-                        <tr key={key}>
-                          <td>{key}</td>
-                          <td>{value}</td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
+                <Chart
+                  data={KPIval}
+                  categories={KPIkey}
+                  />
               </div>
             )}
           </div>

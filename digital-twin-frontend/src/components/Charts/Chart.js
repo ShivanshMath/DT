@@ -5,11 +5,7 @@ import highchartsMore from "highcharts/highcharts-more";
 highchartsMore(Highcharts);
 
 const Chart = (props) => {
-  const minY = props.minY
-    ? props.data[0]?.data
-      ? Math.min(...props.data[0].data)
-      : null
-    : null;
+  const minY = props.minY === true ? 0 : props.minY || 0;
 
   const options = {
     exporting: {

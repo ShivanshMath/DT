@@ -36,7 +36,7 @@ const WhatIfEngineNetwork = () => {
       console.error('Error:', error);
     }
   };
-  const excludedKeys = ['qes_im','network_utilization', 'packetloss', 'dataspeed', 'DL Packet Loss Pct', 'res_uti', 'network_coverage_map'];
+  const excludedKeys = ['health_sta','battery_com','time_mana','energy_eff','qes_im','network_utilization', 'packetloss', 'dataspeed', 'DL Packet Loss Pct', 'res_uti', 'network_coverage_map'];
 
   const networkData = apiResult && 'network_utilization' in apiResult
     ? [{ name: 'Network Utilization',sliced:'true', y: parseFloat(apiResult['network_utilization']), color: '#eb4e14' },
@@ -54,17 +54,11 @@ const WhatIfEngineNetwork = () => {
   const networkStatus = apiResult && 'res_uti' in apiResult
     ? [{ name: 'Resource Utilization',sliced: 'true', y: resUtil, color: '#eb4e14' }, { name: '', y: 100 - resUtil, dataLabels: { enabled: false }, color: '#D3D3D3' },] : [];
 
-  const healthStatus = [{ name: 'Health Status', sliced :'true',y: 80,  color: '#eb4e14' }, { name: '', y: 20, dataLabels: { enabled: false }, color: '#D3D3D3' },]
+  const hs = apiResult && 'health_sta' in apiResult ? parseFloat(apiResult['health_sta']): 0;
+  const healthStatus = [{ name: 'Health Status', sliced :'true',y: hs,  color: '#eb4e14' }, { name: '', y: 100-hs, dataLabels: { enabled: false }, color: '#D3D3D3' },]
+  const ef = apiResult && 'energy_eff' in apiResult ? parseFloat(apiResult['energy_eff'])  : 0;
+  const energyData = [{ name: 'Energy Efficiency', sliced:'true',y: ef, color: '#eb4e14' }, { name: '', y: 100-ef, dataLabels: { enabled: false }, color: '#D3D3D3' },]
 
-  const energyData = [{ name: 'Energy Efficiency', sliced:'true',y: 80, color: '#eb4e14' }, { name: '', y: 20, dataLabels: { enabled: false }, color: '#D3D3D3' },]
-  //   const ResourseUtilData = apiResult && 'PRB Util%' in apiResult
-  // ? [{
-  //   name: 'Resource Utilization',
-  //   data: [90,80,40,65,90,87,39,99,79,25,88,54],
-  //   color: '#6c5ce7',
-  //   type: 'column',
-  // }]
-  // : [];
 
   const KPIvalue=[];
   const KPIkey=[];
@@ -90,13 +84,17 @@ const WhatIfEngineNetwork = () => {
 
 
   const dataspeedVar = [110 - dataspeedVal, dataspeedVal,'Current Speed','Max Speed', '#D3D3D3', '#eb4e14', "bar"];
-  const batteryConsumptionVal = [20, 80,'Current Consumption','Max Consumption', '#D3D3D3', '#eb4e14', "bar"];
+  const bc = apiResult && 'battery_com' in apiResult ? parseFloat(apiResult['battery_com']) : 0;
+  const batteryConsumptionVal = [100-bc, bc,'Current Consumption','Max Consumption', '#D3D3D3', '#eb4e14', "bar"];
 
 
 
   const quesimpVal = [20, 80, 'Current Coverage','Total Coverage', '#D3D3D3', '#eb4e14', "column"]
   const qesVal = apiResult && 'qes_im' in apiResult ? parseFloat(apiResult['qes_im'])*100 : 0;
   const qesChart = [8-qesVal,qesVal,'Current Impact','Max Impact', '#D3D3D3', '#eb4e14', "column"]
+
+   const ttm =apiResult && 'time_mana' in apiResult ? apiResult['time_mana'] : "120";
+   const displayTtm = Number.isInteger(parseFloat(ttm)) ? String(parseInt(ttm)) : String(parseFloat(ttm));
 
 
   return (
@@ -223,16 +221,16 @@ const WhatIfEngineNetwork = () => {
                       {/* <p style={{ paddingTop: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>Max Coverage: 5</p> */}
                     </div>
                     <svg width="100%" height="100%" viewBox="0 0 100 100">
-                      <circle cx="50%" cy="50%" r="35" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" />
+                      <circle cx="50%" cy="50%" r="40" fill="#D3D3D3" fillOpacity="0.5" strokeWidth="2" />
                       <text
                         x="50%"
-                        y="23%"
+                        y="17%"
                         textAnchor="middle"
                         alignmentBaseline="middle"
                         fill="#000"
                         fontSize="6"
                       >
-                        {5}
+                        {12}
                       </text>
 
                       {apiResult && 'network_coverage_map' in apiResult && (
@@ -240,7 +238,7 @@ const WhatIfEngineNetwork = () => {
                           <circle
                             cx="50%"
                             cy="50%"
-                            r={Math.min(7 * apiResult['network_coverage_map'], 20)}
+                            r={Math.min((40/12)* apiResult['network_coverage_map'], 40)}
                             fill="#eb4e14"
                             fillOpacity="1.0"
                             strokeWidth="2"
@@ -287,7 +285,7 @@ const WhatIfEngineNetwork = () => {
                                 fontSize: "10px",
                                 backgroundColor: "transparent",
                               }}
-                              value="120"
+                              value={displayTtm}
                             />
                           </foreignObject>
                         </>
@@ -311,6 +309,7 @@ const WhatIfEngineNetwork = () => {
                 <Chart
                   data={KPIval}
                   categories={KPIkey}
+                  minY={0}
                   />
               </div>
             )}

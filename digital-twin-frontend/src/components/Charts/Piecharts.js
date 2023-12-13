@@ -30,7 +30,7 @@ const PieChart = (props) => {
     series: [
       {
         minPointSize: 10,
-        innerSize: "50%",
+        innerSize: "70%",
         zMin: 0,
         name:props.chartTitle ||  "Customer Spendings",
         data: props.data,

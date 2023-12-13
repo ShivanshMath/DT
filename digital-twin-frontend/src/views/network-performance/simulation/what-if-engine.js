@@ -39,24 +39,24 @@ const WhatIfEngineNetwork = () => {
   const excludedKeys = ['qes_im','network_utilization', 'packetloss', 'dataspeed', 'DL Packet Loss Pct', 'res_uti', 'network_coverage_map'];
 
   const networkData = apiResult && 'network_utilization' in apiResult
-    ? [{ name: 'Network Utilization', y: parseFloat(apiResult['network_utilization']), color: '#eb4e14' },
+    ? [{ name: 'Network Utilization',sliced:'true', y: parseFloat(apiResult['network_utilization']), color: '#eb4e14' },
     { name: '', y: 100 - parseFloat(apiResult['network_utilization']), dataLabels: { enabled: false }, color: '#D3D3D3' }]
     : [];
 
   const pl = apiResult && 'packetloss' in apiResult ? parseFloat(apiResult['packetloss']) * 100 : 0;
   const packetlossData = apiResult && 'packetloss' in apiResult
     ? [{ name: '', y: 100 - pl, dataLabels: { enabled: false }, color: '#D3D3D3' },
-    { name: 'PacketLoss', y: pl, color: '#eb4e14' },
+    { name: 'PacketLoss', sliced:'true',y: pl, color: '#eb4e14' },
     ]
     : [];
 
   const resUtil = apiResult && 'res_uti' in apiResult ? parseFloat(apiResult['res_uti']) : 0;
   const networkStatus = apiResult && 'res_uti' in apiResult
-    ? [{ name: 'Resource Utilization', y: resUtil, color: '#eb4e14' }, { name: '', y: 100 - resUtil, dataLabels: { enabled: false }, color: '#D3D3D3' },] : [];
+    ? [{ name: 'Resource Utilization',sliced: 'true', y: resUtil, color: '#eb4e14' }, { name: '', y: 100 - resUtil, dataLabels: { enabled: false }, color: '#D3D3D3' },] : [];
 
-  const healthStatus = [{ name: 'Health Status', y: 80, color: '#eb4e14' }, { name: '', y: 20, dataLabels: { enabled: false }, color: '#D3D3D3' },]
+  const healthStatus = [{ name: 'Health Status', sliced :'true',y: 80,  color: '#eb4e14' }, { name: '', y: 20, dataLabels: { enabled: false }, color: '#D3D3D3' },]
 
-  const energyData = [{ name: 'Energy Efficiency', y: 80, color: '#eb4e14' }, { name: '', y: 20, dataLabels: { enabled: false }, color: '#D3D3D3' },]
+  const energyData = [{ name: 'Energy Efficiency', sliced:'true',y: 80, color: '#eb4e14' }, { name: '', y: 20, dataLabels: { enabled: false }, color: '#D3D3D3' },]
   //   const ResourseUtilData = apiResult && 'PRB Util%' in apiResult
   // ? [{
   //   name: 'Resource Utilization',
@@ -72,12 +72,17 @@ const WhatIfEngineNetwork = () => {
   // ];
 
   const dataspeedVal = apiResult && 'dataspeed' in apiResult ? parseFloat(apiResult['dataspeed']) : 0;
+
+
   const dataspeedVar = [110 - dataspeedVal, dataspeedVal,'Current Speed','Max Speed', '#D3D3D3', '#eb4e14', "bar"];
   const batteryConsumptionVal = [20, 80,'Current Consumption','Max Consumption', '#D3D3D3', '#eb4e14', "bar"];
-  const quesimpVal = [20, 80, 'Current Coverage','Total Coverage', '#D3D3D3', '#eb4e14', "column"]
 
+
+
+  const quesimpVal = [20, 80, 'Current Coverage','Total Coverage', '#D3D3D3', '#eb4e14', "column"]
   const qesVal = apiResult && 'qes_im' in apiResult ? parseFloat(apiResult['qes_im'])*100 : 0;
   const qesChart = [8-qesVal,qesVal,'Current Impact','Max Impact', '#D3D3D3', '#eb4e14', "column"]
+
 
   return (
     <>

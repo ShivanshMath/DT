@@ -15,6 +15,7 @@ const StackedBarChart = (props) => {
       },
       xAxis: {
         min:0,
+          lineColor: 'white',
         categories: [''],
       },
       yAxis: {
@@ -32,7 +33,7 @@ const StackedBarChart = (props) => {
       plotOptions: {
         series: {
           stacking: 'normal',
-          pointWidth:45,
+          pointWidth:30,
           dataLabels: {
             enabled: true
         }

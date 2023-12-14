@@ -1,0 +1,115 @@
+.layout {
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    justify-content: left;
+  }
+  header {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }
+  
+  .result-container {
+    margin-top: 20px;
+  }
+  
+  .result-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .result-table {
+    justify-content: center;
+    justify-self: center;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .result-table th,
+  .result-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .result-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .charts-container {
+    display: flex;
+    margin-bottom: 30px;
+  
+  }
+  
+  
+  .chart-box{
+  
+    display: none;
+    width: 48%;
+    margin-right: 2%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .chart-box.show {
+    display: block; 
+  }
+  .card-header {
+   
+    padding: 15px;
+    background: linear-gradient(135deg, #5b247a 0%, #1bcedf 100%);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 8px 8px 0px 0px;
+  }
+  
+  
+  .additional-chart-container {
+    margin-top: 20px;
+  }
+  
+  .additional-chart-header {
+    padding: 15px;
+    background: linear-gradient(135deg, #5b247a 0%, #1bcedf 100%);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 8px 8px 0px 0px;
+  }
+  
+  

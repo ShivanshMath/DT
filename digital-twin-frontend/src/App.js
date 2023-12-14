@@ -11,6 +11,7 @@ import RecommendationEnine from "./views/consumerBehavior/simulation/recommendat
 import NetworkAnalysis from "./views/network-performance/network-analytics";
 import NetworkRootLayout from "./components/networkRootLayout";
 import WhatIfEngineNetwork from "./views/network-performance/simulation/what-if-engine";
+import CoreEngineNetwork from "./views/network-performance/simulation/core-engine-network";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "analytics",
         element: <NetworkAnalysis />,
+      },
+      {
+        path:"simulation/core-engine",
+        element: <CoreEngineNetwork/>,
       },
       {
         path: "simulation/what-if-engine",

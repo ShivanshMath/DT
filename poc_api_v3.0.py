@@ -14,7 +14,7 @@ import subprocess
 from configparser import ConfigParser
 from datetime import datetime
 from calendar import month_abbr
- 
+import numpy as np
 from flask import Flask, make_response, request, jsonify
 from flask_cors import CORS,cross_origin
 import numpy as np
@@ -297,12 +297,14 @@ def model_1(avg_connected_ue_value):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
  
-@app.route('/model-2', methods=['GET'])
+@app.route('/qos', methods=['GET'])
 def model_2():
-    return "Model 2"
- 
- 
- 
+    df=pd.read_csv('data/syntheticdata_v1.csv')
+    df['packet_loss_rate'] = np.maximum(df['DL Packet Loss Pct'], df['UL Resid BLER PCT'])
+    latest_packet_loss_rate = df['packet_loss_rate'].tail(24)
+    packet_loss_rate_list = latest_packet_loss_rate.to_list()
+    return jsonify({'result':packet_loss_rate_list}) 
+
 if __name__ == "__main__":
     LOG.info("Server is running on localhost!!")
     app.run(host=ip, port=port, debug=True)
